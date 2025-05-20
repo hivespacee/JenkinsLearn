@@ -5,7 +5,11 @@ pipeline {
         VENV = 'venv'
     }
     
-    stage ("Verify Python") {
+    
+    
+    stages {
+
+        stage ("Verify Python") {
         steps {
             sh '''
                 python3 --version
@@ -13,8 +17,6 @@ pipeline {
             '''
         }
     }
-    
-    stages {
         stage ("Install") {
             steps {
                 sh '''
