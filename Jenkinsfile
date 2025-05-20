@@ -1,10 +1,10 @@
 pipeline {
     agent any
-
+ 
     environment {
         VENV = 'venv'
     }
-
+ 
     stages {
         stage ("Install") {
             steps {
@@ -12,22 +12,23 @@ pipeline {
                     python3 -m venv $VENV
                     . $VENV/bin/activate
                     pip install --upgrade pip
-                    pip install -r requirements.txt
+                    pip install -r requirements.txt wheel
                 '''
             }
         }
-        stage ("Linting") {
+        stage ("Lint") {
             steps {
                 script {
                     echo "This is my Linting Step"
                 }
             }
         }
-        stage ("Install Packages") {
+        stage ("Test") {
             steps {
-                script {
-                    echo "This is Install PAkcges Step"
-                }
+                sh '''
+                    . $VENV/bin/activate
+                    pytest --cov=app --junitxml=pytest-results.xml tests/
+                '''
             }
         }
         stage ("Run Application") {
@@ -37,6 +38,6 @@ pipeline {
                 }
             }
         }
-
+ 
     }
 }
