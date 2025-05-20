@@ -9,11 +9,11 @@ pipeline {
     
     stages {
 
-        stage ("Verify Python") {
+        stage ("Docker in Docker") {
         steps {
             sh '''
-                python3 --version
-                which python3
+                docker build -t amaan2405/mcqueen
+                docker run amaan2405/mcqueen
             '''
         }
     }
