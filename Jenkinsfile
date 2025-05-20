@@ -4,7 +4,16 @@ pipeline {
     environment {
         VENV = 'venv'
     }
- 
+    
+    stage ("Verify Python") {
+        steps {
+            sh '''
+                python3 --version
+                which python3
+            '''
+        }
+    }
+    
     stages {
         stage ("Install") {
             steps {
@@ -16,6 +25,7 @@ pipeline {
                 '''
             }
         }
+
         stage ("Lint") {
             steps {
                 script {
