@@ -12,7 +12,7 @@ pipeline {
         stage ("Docker in Docker") {
         steps {
             sh '''
-                docker build -t amaan2405/mcqueen
+                docker build -t amaan2405/mcqueen .
                 docker run amaan2405/mcqueen
             '''
         }
