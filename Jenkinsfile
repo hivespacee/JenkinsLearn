@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'amaan2405/jenkins-python-custom'
+            image 'amaan2405/mcqueen'
             label 'my-agent'
         }
     }
