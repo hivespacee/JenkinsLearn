@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker{
+            image 'amaan2405/mcqueen'
+            label 'my-agent'
+        }
+    }
  
     environment {
         VENV = 'venv'
