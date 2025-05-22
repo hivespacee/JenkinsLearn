@@ -9,6 +9,13 @@ pipeline {
     
     stages {
 
+        stage("The First Stage "){
+            steps{
+                script{
+                    echo "The First Script has been executed, HI DEVELOPER"   
+                }
+        }
+
         stage ("Docker in Docker") {
         steps {
             sh '''
