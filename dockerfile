@@ -10,6 +10,6 @@ RUN apt-get update && \
     usermod -aG docker jenkins
 
 # Optional: Verify Docker is working inside the container
-RUN docker --version
+# RUN docker --version
 
 USER jenkins
