@@ -1,29 +1,12 @@
 pipeline {
     agent any
-
+ 
     environment {
         VENV = 'venv'
     }
-
+ 
     stages {
-        stage("The First Stage") {
-            steps {
-                script {
-                    echo "The First Script has been executed, HI DEVELOPER"
-                }
-            }
-        }
-
-        stage("Docker in Docker") {
-            steps {
-                sh '''
-                    docker build -t amaan2405/mcqueen .
-                    docker run amaan2405/mcqueen
-                '''
-            }
-        }
-
-        stage("Install") {
+        stage ("Install") {
             steps {
                 sh '''
                     python3 -m venv $VENV
@@ -33,16 +16,14 @@ pipeline {
                 '''
             }
         }
-
-        stage("Lint") {
+        stage ("Lint") {
             steps {
                 script {
                     echo "This is my Linting Step"
                 }
             }
         }
-
-        stage("Test") {
+        stage ("Test") {
             steps {
                 sh '''
                     . $VENV/bin/activate
@@ -50,13 +31,13 @@ pipeline {
                 '''
             }
         }
-
-        stage("Run Application") {
+        stage ("Run Application") {
             steps {
                 script {
                     echo "This is my Run applcaition Step"
                 }
             }
         }
+ 
     }
 }
