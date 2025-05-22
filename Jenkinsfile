@@ -4,8 +4,19 @@ pipeline {
     environment {
         VENV = 'venv'
     }
- 
+    
+    
+    
     stages {
+
+        stage ("Docker in Docker") {
+        steps {
+            sh '''
+                docker build -t amaan2405/mcqueen .
+                docker run amaan2405/mcqueen
+            '''
+        }
+    }
         stage ("Install") {
             steps {
                 sh '''
@@ -16,6 +27,7 @@ pipeline {
                 '''
             }
         }
+
         stage ("Lint") {
             steps {
                 script {
